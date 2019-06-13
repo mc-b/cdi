@@ -1,0 +1,63 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+#
+#	Ubuntu Xenial 64-bit Linux mit Docker
+#
+
+Vagrant.configure("2") do |config|
+
+  config.vm.box = "ubuntu/xenial64"
+
+  # Create forwarded port mapping which allows access to a specific port
+  # within the machine from a port on the host machine. 
+  # NOTE: This will enable public access to the opened ports
+  for i in 32760..32780
+    config.vm.network :forwarded_port, guest: i, host: i
+  end
+    
+  # Create a private network, which allows host-only access to the machine
+  # using a specific IP.
+  config.vm.hostname = "kubernetes"
+  config.vm.network "private_network", ip:"192.168.60.102"
+      
+  # Share an additional folder to the guest VM.
+  # config.vm.synced_folder "../data", "/vagrant_data"
+
+  config.vm.provider "virtualbox" do |vb|
+     vb.memory = "2048"
+  end
+
+  # Docker Provisioner
+  config.vm.provision "docker" do |d|
+  end
+  
+config.vm.provision "shell", inline: <<-SHELL
+    set -o xtrace
+    # Kubernetes Installation
+    curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+    echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" >> /etc/apt/sources.list.d/Kubernetes.list
+    apt-get update
+    apt-get install -y kubelet kubeadm
+    # Init Cluster
+    kubeadm init --apiserver-advertise-address 192.168.60.102
+    mkdir -p $HOME/.kube
+    cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+    chown $(id -u):$(id -g) $HOME/.kube/config
+    cp -rp $HOME/.kube /home/vagrant/
+    chown -R vagrant:vagrant /home/vagrant/.kube        
+    for i in {1..150}; do # timeout for 5 minutes
+       ./kubectl get po &> /dev/null
+       if [ $? -ne 1 ]; then
+          break
+      fi
+      sleep 2
+    done
+    # Pods auf Master zulassen 
+    kubectl taint nodes --all node-role.kubernetes.io/master-
+    # Overlay Network
+    sysctl net.bridge.bridge-nf-call-iptables=1    
+    kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"    
+SHELL
+  
+end
