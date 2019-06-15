@@ -1,29 +1,29 @@
-# Beispiele zum Kurs: [DevOps Engineering Practices &amp; Tools (CDI)](https://www.digicomp.ch/weiterbildung/development-trainings/software-engineering-trainings/software-engineering-basics/devops-in-der-software-entwicklung/kurs-devops-engineering-practices-tools)
+# Beispiele zum Kurs: [DevOps Engineering Practices & Tools (CDI)](https://www.digicomp.ch/weiterbildung/development-trainings/software-engineering-trainings/software-engineering-basics/devops-in-der-software-entwicklung/kurs-devops-engineering-practices-tools)
 
-Inhalt
-------
+Inhalt und Beispiele
+--------------------
 
 * [Einführung in DevOps](https://publications.opengroup.org/w162)
     * Begriffsklärung 
     * Auswirkungen auf die Organisation 
     * Neue Arbeitsweisen 
-* [Infrastruktur](02-Infrastruktur) 
+* [Infrastruktur](02-Infrastruktur/) 
     * Virtualisierung
     * Containerisierung
     * Orchestrierung
-* Build Systeme
-    * [Einführung in Build Systeme am Beispiel von Maven](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html)
+* [Build Systeme](03-Build/)
+    * Einführung in Build Systeme am Beispiel von Maven
     * [Installation und Setup](https://books.sonatype.com/mvnex-book/reference/installation.html)
-    * [Praktische Beispiele für den Einsatz von Maven](03-Build/maven/) 
-* Source Code Management 
-    * Git und Github, das populärste Source Code Management Tool im agilen Umfeld
-* Continuous Integration mit Jenkins (Blue Ocean) Übersicht
+    * Praktische Beispiele für den Einsatz von Maven 
+* [Source Code Management](04-SCM/) 
+    * [Git](https://git-scm.com/book/de/v2) und [Github](https://guides.github.com/), das populärste Source Code Management Tool im agilen Umfeld
+* [Continuous Integration mit Jenkins (Blue Ocean) Übersicht](05-CI/)
     * Konfiguration von Build Jobs 
-* Automatisierte Tests und Qualitätsüberprüfungen
+* [Automatisierte Tests und Qualitätsüberprüfungen](06-Test/)
     * Unit und Integrations Tests
     * Prüfen der Testabdeckung
     * Prüfen der Codequalität
-* Continuous Delivery Pipeline mit Docker und Kubernetes
+* [Continuous Delivery Pipeline mit Docker und Kubernetes](07-CD/)
     * Deployment der Artefakte aus der Pipeline als Container
   
 Lernziele
@@ -44,7 +44,13 @@ Projekt [lernkube](https://github.com/mc-b/lernkube), auf der Git/Bash Kommandoz
     cp templates/CDI.yaml config.yaml
     vagrant plugin install vagrant-disksize
     vagrant up
+    
+Nach der erfolgreichen Installation werden Informationen zum Installierten Kubernetes Cluster angezeigt.
 
-Öffnet die Interaktive Lernumgebung mittels [http://localhost:32188](http://localhost:32188), wechselt in das Verzeichnis `work` und wählt ein Notebook (ipynp Dateien) an. 
+    ====================================================================
+    VM: master-01, Cluster-IP: 192.168.137.100
+    dashboard - Aufruf Dashboard, Login mit
+    token:      .....
+    ====================================================================
 
-**Weitere Installationsmöglichkeiten und Details** zur Installation siehe Projekt [lernkube](https://github.com/mc-b/lernkube).
+Nach Eingabe von `source kubeenv` sind alle benötigten Umgebungsvariablen gesetzt und es kann, mittels den angezeigten Befehlen, auf den Kubernetes Cluster zugegriffen werden. 
