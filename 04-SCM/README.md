@@ -34,11 +34,20 @@ Die Beispiele befinden sich auf [GitHub](https://de.wikipedia.org/wiki/GitHub) i
 
 ### Repository von GitHub Project clonen
 
-Starten Sie `Bash`, setzen Mail und Username und clonen das Repository mit den Beispielen:
+Starten Sie `Bash`, setzen Mail und Username, erstellen eine SSH Key, geben den Public Teil davon aus und kopieren die Ausgabe in die Zwischenablage.
 
     git config --global user.name "<username>"
-    git config --global user.email "<mail>"
-    git clone https://github.com/mc-b/cdi
+    git config --global user.email "<your_email>"
+    ssh-keygen -t rsa -b 4096 -C "your_email"
+    cat $HOME/.ssh/id_rsa.pub
+  
+
+Erstellen Sie eine Account auf [github.com](https://github.com). Und legen den Key unter `Settings` -> `SSH Keys` ab.   
+
+Anschliessen können Sie dieses Repository mittels `ssh`-URL clonen:
+
+    git clone git@github.com:mc-b/cdi.git
+   
     
 Markdown 
 --------
