@@ -11,5 +11,5 @@ kubectl apply -f https://raw.githubusercontent.com/mc-b/duk/master/devops/jenkin
 
 
 # Jupyter Scripte etc. Allgemein verfuegbar machen
-cp -rpv [0?]*/* /data/src/
+cp -rpv [0?]* /data/src/
 
