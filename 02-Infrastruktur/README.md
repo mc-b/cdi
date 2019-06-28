@@ -7,9 +7,9 @@ Vagrant automatisiert die Erstellung von Virtuellen Maschinen anhand von Definit
 
 **Beispiele**
 
-* [Apache Web Server](web/)
-* [Windows 10 - offizielle Box von Microsoft](win10/)
-* [Mac OSx](macosx/)
+* [Apache Web Server](vm/web/)
+* [Windows 10 - offizielle Box von Microsoft](vm/win10/)
+* [Mac OSx](vm/macosx/)
 
 ### Containerisierung
 
