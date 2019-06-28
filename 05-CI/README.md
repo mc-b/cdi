@@ -5,4 +5,13 @@ Kontinuierliche Integration (auch fortlaufende oder permanente Integration; 
 
 Jenkins ist ein erweiterbares, webbasiertes Software-System zur kontinuierlichen Integration von Komponenten zu einem Anwendungsprogramm. 
 
+* Jenkins wie unter [DevOps](https://github.com/mc-b/duk/tree/master/devops#jenkins-mit-blueocean) beschrieben installieren
+* Neues Repository anlegen mit README.md, Jenkinsfile (leer) und Makefile mit folgendem Inhalt
 
+    target/artefakt.jar:
+        mkdir -p target
+        touch target/artefakt.jar
+
+Nachfolgende Beispiele durchspielen:
+* [Getting started with Pipeline ](https://jenkins.io/doc/book/pipeline/getting-started/)
+* [Using a Jenkinsfile](https://jenkins.io/doc/book/pipeline/jenkinsfile/)
