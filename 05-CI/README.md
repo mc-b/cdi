@@ -15,3 +15,21 @@ Jenkins ist ein erweiterbares, webbasiertes Software-System zur kontinuierli
 Nachfolgende Beispiele durchspielen:
 * [Getting started with Pipeline ](https://jenkins.io/doc/book/pipeline/getting-started/)
 * [Using a Jenkinsfile](https://jenkins.io/doc/book/pipeline/jenkinsfile/)
+
+Erweitert die Beispiele aus Kapitel [03-Build](../03-Build/maven) um einen `Jenkinsfile`.
+
+    pipeline {
+        agent {
+            docker {
+                image 'maven:3-alpine'
+                args '-v /root/.m2:/root/.m2'
+            }
+        }
+        stages {
+            stage('Build') {
+                steps {
+                    sh 'mvn -B -DskipTests clean package'
+                }
+            }
+        }
+    }
