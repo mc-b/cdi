@@ -42,7 +42,7 @@ Der Begriff Integrationstest bezeichnet in der Softwareentwicklung eine aufe
 
 ### Prüfung der Testabdeckung
 
-Mittels [Cobertura](https://cobertura.github.io/cobertura/) ist ein Tool zum Prüfen der Codeabdeckung.
+[Cobertura](https://cobertura.github.io/cobertura/) ist ein Tool zum Prüfen der Testabdeckung.
 
 Für die Integration muss zuerst das `pom.xml` in der `build` Sektion erweitert werden:
 
@@ -81,4 +81,35 @@ Dann den `Jenkinsfile` erweitern
 Das Plug-in [Cobertura](https://wiki.jenkins.io/display/JENKINS/Cobertura+Plugin) `Jenkins verwalten` -> `Plugin verwalten` -> `verfügbar` in Jenkins hinzufügen.
 
 Den Job neu bauen.
+
+### Prüfung der Codequalität
+
+[Checkstyle](https://wiki.jenkins.io/display/JENKINS/Checkstyle+Plugin) ist ein Tool zum Prüfen der Codequalität.
+
+Für die Integration muss zuerst das `pom.xml` in der `build` Sektion erweitert werden:
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-checkstyle-plugin</artifactId>
+          <version>3.1.0</version>
+        </plugin>
+    
+Dann den `Jenkinsfile` erweitern
+
+        stage('Code Analyse') {
+            steps {
+                sh 'mvn checkstyle:checkstyle'
+            }
+            post {
+                always {
+                  checkstyle pattern: 'target/checkstyle-result.xml'
+                }
+            }
+        }
+
+Das Plug-in [Checkstyle](https://wiki.jenkins.io/display/JENKINS/Checkstyle+Plugin) `Jenkins verwalten` -> `Plugin verwalten` -> `verfügbar` in Jenkins hinzufügen.
+
+Den Job neu bauen.
+
+
     
