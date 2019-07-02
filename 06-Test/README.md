@@ -39,3 +39,46 @@ Erweiterung des `Jenkinsfile` um Aufbereitung der Testergebnisse:
 ### Integrationtest
 
 Der Begriff Integrationstest bezeichnet in der Softwareentwicklung eine aufeinander abgestimmte Reihe von Einzeltests, die dazu dienen, verschiedene voneinander abhängige Komponenten eines komplexen Systems im Zusammenspiel miteinander zu testen. Die erstmals im gemeinsamen Kontext zu testenden Komponenten haben im Idealfall jeweilige Modultests (Unittests) erfolgreich bestanden und sind für sich isoliert fehlerfrei funktionsfähig.
+
+### Prüfung der Testabdeckung
+
+Mittels [Cobertura](https://cobertura.github.io/cobertura/) ist ein Tool zum Prüfen der Codeabdeckung.
+
+Für die Integration muss zuerst das `pom.xml` in der `build` Sektion erweitert werden:
+
+    <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>cobertura-maven-plugin</artifactId>
+        <version>2.5.1</version>
+        <configuration>
+            <formats>
+                <format>xml</format>
+            </formats>
+        </configuration>
+        <executions>
+            <execution>
+                <phase>package</phase>
+                <goals>
+                    <goal>cobertura</goal>
+                </goals>
+            </execution>
+        </executions>
+    </plugin>
+    
+Dann den `Jenkinsfile` erweitern
+
+        stage('Test Analysis') {
+            steps {
+                sh 'mvn cobertura:cobertura'
+            }
+            post {
+                always {
+                  cobertura coberturaReportFile: 'target/site/cobertura/coverage.xml'
+                }
+            }
+        }
+
+Das Plug-in [Cobertura](https://wiki.jenkins.io/display/JENKINS/Cobertura+Plugin) `Jenkins verwalten` -> `Plugin verwalten` -> `verfügbar` in Jenkins hinzufügen.
+
+Den Job neu bauen.
+    
