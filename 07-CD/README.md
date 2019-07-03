@@ -43,20 +43,6 @@ Zum Testen können wir alle lokalen Container Images weglöschen und das Image d
     
     docker run localhost:32513/my-app   
 
-### Kubernetes
-
-Um den Container in Kubernetes laufen zu lassen, benötigen wir noch die Definition im `YAML`-Format.
-
-Die erhalten wir am einfachsten mittels `kubectl run`.
-
-    kubectl run my-app --image=localhost:32513/my-app
-    kubectl get deployment/my-app -o yaml
-
-Falls eine Service Definition benötigt wird verwenden wir `kubectl expose`.
-
-    kubectl expose deployment/my-app --type="LoadBalancer" --port 8080
-    kubectl get service my-app -o yaml
-
 ### Jenkinsfile
 
 Um die Container Images zu builden ist das `Jenkinsfile` zu erweitern:
@@ -86,5 +72,21 @@ Um die Container Images zu builden ist das `Jenkinsfile` zu erweitern:
         }
     }
         
-Weitere Beispiele im Projekt [bpmn-tutorial](https://github.com/mc-b/bpmn-tutorial/blob/master/Jenkinsfile).    
+Weitere Beispiele in den Projekten 
+* [bpmn-tutorial](https://github.com/mc-b/bpmn-tutorial/blob/master/Jenkinsfile)
+* [A.L.A. (Automated Linguistic Analysis) application](https://github.com/ideas-into-software/automated-linguistic-analysis), [der Blog dazu](https://jaxenter.com/osgi-applications-on-kubernetes-159310.html)
+
+### Kubernetes
+
+Um den Container in Kubernetes laufen zu lassen, benötigen wir noch die Definition im `YAML`-Format.
+
+Die erhalten wir am einfachsten mittels `kubectl run`.
+
+    kubectl run my-app --image=localhost:32513/my-app
+    kubectl get deployment/my-app -o yaml
+
+Falls eine Service Definition benötigt wird verwenden wir `kubectl expose`.
+
+    kubectl expose deployment/my-app --type="LoadBalancer" --port 8080
+    kubectl get service my-app -o yaml  
         

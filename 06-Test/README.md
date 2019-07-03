@@ -36,6 +36,8 @@ Erweiterung des `Jenkinsfile` um Aufbereitung der Testergebnisse:
         }
     }
 
+* siehe auch YouTube: [Recording Test Results and Archiving Artifacts](https://www.youtube.com/watch?v=c9E8kGuAwLU)
+
 ### Integrationtest
 
 Der Begriff Integrationstest bezeichnet in der Softwareentwicklung eine aufeinander abgestimmte Reihe von Einzeltests, die dazu dienen, verschiedene voneinander abhängige Komponenten eines komplexen Systems im Zusammenspiel miteinander zu testen. Die erstmals im gemeinsamen Kontext zu testenden Komponenten haben im Idealfall jeweilige Modultests (Unittests) erfolgreich bestanden und sind für sich isoliert fehlerfrei funktionsfähig.

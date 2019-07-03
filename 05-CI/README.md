@@ -33,3 +33,5 @@ Erweitert die Beispiele aus Kapitel [03-Build](../03-Build/maven) um einen `Jenk
             }
         }
     }
+    
+* siehe auch: [Groove your Jenkins: Wir bauen eine Deployment-Pipeline mit dem Jenkins Workflow-Plug-in](https://jaxenter.de/groove-your-jenkins-49423)    
