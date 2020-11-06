@@ -17,7 +17,7 @@ pipeline {
             }
             post {
                 always {
-                  junit 'target/surefire-reports/*.xml'
+                  junit 'cd 06-Test/my-app/target/surefire-reports/*.xml'
                 }
             }
         }
@@ -27,7 +27,7 @@ pipeline {
             }
             post {
                 always {
-                  cobertura coberturaReportFile: 'target/site/cobertura/coverage.xml'
+                  cobertura coberturaReportFile: 'cd 06-Test/my-app/target/site/cobertura/coverage.xml'
                 }
             }
         }
@@ -37,7 +37,7 @@ pipeline {
             }
             post {
                 always {
-                  checkstyle pattern: 'target/checkstyle-result.xml'
+                  checkstyle pattern: 'cd 06-Test/my-app/target/checkstyle-result.xml'
                 }
             }
         }
