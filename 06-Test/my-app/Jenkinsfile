@@ -8,36 +8,36 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn -B -DskipTests clean package'
+                sh 'cd 06-Test/my-app; mvn -B -DskipTests clean package'
             }
         }
         stage('Test') {
             steps {
-                sh 'mvn test'
+                sh 'cd 06-Test/my-app; mvn test'
             }
             post {
                 always {
-                  junit 'target/surefire-reports/*.xml'
+                  junit '06-Test/my-app/target/surefire-reports/*.xml'
                 }
             }
         }
         stage('Test Analyse') {
             steps {
-                sh 'mvn cobertura:cobertura'
+                sh 'cd 06-Test/my-app; mvn cobertura:cobertura'
             }
             post {
                 always {
-                  cobertura coberturaReportFile: 'target/site/cobertura/coverage.xml'
+                  cobertura coberturaReportFile: '06-Test/my-app/target/site/cobertura/coverage.xml'
                 }
             }
         }
         stage('Code Analyse') {
             steps {
-                sh 'mvn checkstyle:checkstyle'
+                sh 'cd 06-Test/my-app; mvn checkstyle:checkstyle'
             }
             post {
                 always {
-                  checkstyle pattern: 'target/checkstyle-result.xml'
+                  checkstyle pattern: '06-Test/my-app/target/checkstyle-result.xml'
                 }
             }
         }
