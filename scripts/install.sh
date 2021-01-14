@@ -13,4 +13,5 @@ kubectl apply -f https://raw.githubusercontent.com/mc-b/duk/master/devops/eclips
 
 # Jupyter Scripte etc. Allgemein in Eclipse Theia verfuegbar machen
 mkdir -p /data/project/src
-cp -rpv [0?]* /data/project/
+mkdir -p /data/project/cdi
+cp -rpv [0?]* /data/project/cdi/
