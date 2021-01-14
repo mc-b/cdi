@@ -11,6 +11,6 @@ kubectl apply -f https://raw.githubusercontent.com/mc-b/duk/master/devops/jenkin
 kubectl apply -f https://raw.githubusercontent.com/mc-b/duk/master/devops/eclipse-theia.yaml
 
 
-# Jupyter Scripte etc. Allgemein verfuegbar machen
-cp -rpv [0?]* /data/src/
+# Jupyter Scripte etc. Allgemein in Eclipse Theia verfuegbar machen
+cp -rpv [0?]* /data/project/
 
