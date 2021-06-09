@@ -5,3 +5,5 @@ Erstellungsprozess oder Build-Prozess (von englisch to build „bauen“) bezeic
 
 * [make](make/)
 * [Maven](maven/)
+* [Nexus3 Registry](https://github.com/mc-b/duk/tree/master/registry#nexus3-repository)
+* [GitLab als Registry](https://github.com/mc-b/duk/tree/master/registry#gitlab)
