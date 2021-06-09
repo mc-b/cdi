@@ -59,7 +59,7 @@ config.vm.provision "shell", inline: <<-SHELL
     sysctl net.bridge.bridge-nf-call-iptables=1    
     kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"  
     # Apache Web Server zu Testzwecken starten
-    kubectl run apache --image=httpd --replicas=4
+    kubectl create deployment apache --image=httpd --replicas=4
     kubectl expose deployment/apache --type="LoadBalancer" --port 80  
     echo "Apache on http://192.168.60.102:"$(kubectl get service apache -o=jsonpath='{ .spec.ports[0].nodePort }')
 SHELL
