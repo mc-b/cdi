@@ -12,7 +12,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.define "main" do |main|
-    main.vm.box = "ubuntu/xenial64"
+    main.vm.box = "ubuntu/focal64"
     main.vm.provider "virtualbox" do |vb|
       vb.memory = "4096" 
     end
@@ -21,6 +21,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     main.vm.network "forwarded_port", guest:443, host:8443, auto_correct: false
     main.vm.provision "shell", inline: <<-SHELL
       set -o xtrace    
+      apt-get update
       snap install microk8s --classic
       usermod -a -G microk8s vagrant
       microk8s enable dns 
@@ -33,14 +34,15 @@ SHELL
   end
   
   config.vm.define "worker" do |worker|
-    worker.vm.box = "ubuntu/xenial64"
+    worker.vm.box = "ubuntu/focal64"
     worker.vm.hostname = "worker"
     worker.vm.network "private_network", ip:"192.168.137.201" 
     worker.vm.provider "virtualbox" do |vb|
       vb.memory = "4096"  
     end     
     worker.vm.provision "shell", inline: <<-SHELL
-      set -o xtrace    
+      set -o xtrace  
+      apt-get update
       snap install microk8s --classic
       echo $(ssh -i /vagrant/.vagrant/machines/main/virtualbox/private_key -o StrictHostKeyChecking=no vagrant@192.168.137.200 "sudo microk8s add-node | grep 192.168.137.200") >/tmp/join
       bash -x /tmp/join
