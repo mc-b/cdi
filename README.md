@@ -42,7 +42,6 @@ Projekt [lernkube](https://github.com/mc-b/lernkube), auf der Git/Bash Kommandoz
     git clone https://github.com/mc-b/lernkube
     cd lernkube
     cp templates/CDI.yaml config.yaml
-    vagrant plugin install vagrant-disksize
     vagrant up
     
 Nach der erfolgreichen Installation werden Informationen zum Installierten Kubernetes Cluster angezeigt.
