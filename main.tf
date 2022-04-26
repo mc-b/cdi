@@ -11,7 +11,7 @@ module "master" {
   #source     = "git::https://github.com/mc-b/terraform-lerncloud-aws"
   #source     = "git::https://github.com/mc-b/terraform-lerncloud-azure" 
 
-  module      = "cdimaster-${var.host_no}-${terraform.workspace}"
+  module      = "cdi-${var.host_no}-${terraform.workspace}"
   description = "Kubernetes Master"
   userdata    = "cloud-init.yaml"
 
