@@ -5,8 +5,8 @@
 module "gitlab" {
 
   #source     = "./terraform-lerncloud-module"
-  #source = "git::https://github.com/mc-b/terraform-lerncloud-multipass"
-  source     = "git::https://github.com/mc-b/terraform-lerncloud-maas"
+  source = "git::https://github.com/mc-b/terraform-lerncloud-multipass"
+  #source     = "git::https://github.com/mc-b/terraform-lerncloud-maas"
   #source     = "git::https://github.com/mc-b/terraform-lerncloud-lernmaas"  
   #source     = "git::https://github.com/mc-b/terraform-lerncloud-aws"
   #source     = "git::https://github.com/mc-b/terraform-lerncloud-azure" 
