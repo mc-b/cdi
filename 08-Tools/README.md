@@ -13,7 +13,7 @@ Werden für die Pipeline Jobs benötigt. Keine Runners, keine Pipelines in Gitla
 
 Erlaubt das Ausführen von Shellscripts auf der lokalen VM, wo auch GitLab installiert ist.
 
-Die Installation, wie in `Admin` -> `Runners` beschrieben, erfolgt im Cloud-init Script.
+Die Installation, wie in `Admin` -> `Runners` beschrieben, erfolgt im [Cloud-init Script](cloud-init-dev.yaml).
 
 Es muss nur noch der Befehl `Command to register runner` ausgeführt werden.
 
@@ -34,7 +34,7 @@ Zum Debuggen des Runners
     
 ### Docker
 
-Am einfachsten ist es den `gitlab-runner` als Linux Service, wie in der Standard Anleitung von GitLab beschrieben, zu installieren.
+Den `gitlab-runner` als Linux Service, wie in der Standard Anleitung von GitLab beschrieben, zu installieren. Siehe [Cloud-init Script](cloud-init-dev.yaml).
 
 Anschliessend ist der Runner zu Registrieren:
 
@@ -49,8 +49,7 @@ Nach der Installation ist die Konfigurationsdatei ggf. `/etc/gitlab-runner/confi
     concurrent = 2
     check_interval = 5
     
-    [session_server]
-      session_timeout = 1800
+    ...
     
     [[runners]]
       name = "docker"
@@ -58,34 +57,26 @@ Nach der Installation ist die Konfigurationsdatei ggf. `/etc/gitlab-runner/confi
       token = "bpNtz94yh36gVzsdoNjv"
       executor = "docker"
       copy_url = "http://172.17.0.1"
-      [runners.custom_build_dir]
-      [runners.cache]
-        [runners.cache.s3]
-        [runners.cache.gcs]
-        [runners.cache.azure]
+      ...
       [runners.docker]
         tls_verify = false
         image = "busybox:latest"
         privileged = false
-        disable_entrypoint_overwrite = false
-        oom_kill_disable = false
-        disable_cache = false
-        volumes = ["/cache"]
-        shm_size = 0
+        ...
 
 Die wichtigsten Einträge:
 * `concurrent` - wieviele Jobs gleichzeitig ausgeführt werden können
 * `check_interval` - in welchem Intervall nach neuen Jobs gesucht werden soll. Wenn `0` wird der Defaultwert von 50 Sekunden verwendet.
-* `copy_url` - von welchem Host `git clone` erfolgen soll. Der Wert `172.17.0.1` ist die Docker Host IP.
+* `copy_url` - von welchem Host `git clone` erfolgen soll. Braucht es nur, wenn der GitLab Server nicht via DNS aufgelöst werden kann. Der Wert `172.17.0.1` ist die Docker Host IP.
 * `privileged` - wenn `true` kann innerhalb der Jobs `docker` aufgerufen werden, z.B. für `docker build`.
 
 ### Kubernetes
 
-Erstellt eine Kubernetes Umgebung, hier basierend auf microk8s. 
+Erstellt eine Kubernetes Umgebung, z.B. Basierend auf [microk8s](cloud-init-k8s.yaml).
 
-Erweitert die ConfigMap vom CoreDNS Service in Kubernetes um den DNS Eintrag (`hosts`) vom Gitlab Server.
+Erweitert die ConfigMap vom CoreDNS Service, in Kubernetes, um den DNS Eintrag (`hosts`) vom Gitlab Server (IP und FQDN).
 
-Das Ergebnis ist etwa so aus:
+Das Ergebnis sieht etwa so aus:
 
     {
         "Corefile": ".:53 {
@@ -99,19 +90,11 @@ Das Ergebnis ist etwa so aus:
                 }
                 ....
 
-Installiert den `gitlab-runner` mittels `helm`.
+Die Installation des `gitlab-runner` erfolgt im [Cloud-init Script](cloud-init-k8s.yaml).
 
-    sudo microk8s enable helm3
-    sudo microk8s helm3 repo add gitlab https://charts.gitlab.io
-    kubectl create namespace gitlab
-    sudo microk8s helm3 install -n gitlab gitlab-runner gitlab/gitlab-runner
+Anschliessend ist der Runner zu Registrieren:
 
-    # laut Ausgabe Verfahren
     sudo microk8s helm3 upgrade -n gitlab gitlab-runner --set gitlabUrl=http://gitlab-28-default.mshome.net/,runnerRegistrationToken=GR1348941Foz7w54CN3PVfLkU4QBB gitlab/gitlab-runner
-
-Aufräumen
-    
-    sudo microk8s helm3 delete -n gitlab gitlab-runner
 
 ### Links
 
