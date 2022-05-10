@@ -1,21 +1,14 @@
-Kubernetes
-==========
+GitLab
+======
 
-Umgebung zum Kurs: [DevOps Engineering Practices & Tools (CDI)](https://github.com/mc-b/cdi).
+GitLab Testumgebung zum Kurs: [DevOps Engineering Practices & Tools (CDI)](https://github.com/mc-b/cdi).
 
-Services
---------
+VMs
+---
 
-* https://${fqdn}:8443 - Kubernetes Dashboard (kein Token notwendig, Überspringen drücken)
-* http://${fqdn}:32400 - Entwicklungsumgebung Eclipse Theia
-* http://${fqdn}:32100 - CI/CD Jenkins (User/PW: admin)
+### GitLab
 
-Patches
--------
+* http://${fqdn} - GitLab Admin Oberfläche. Einloggen mit `root`, dass Password steht in der Datei `/etc/gitlab/initial_root_password`.
 
-Bevor die erste Pipeline gestartet werden kann ist der Jenkins-URL anzupassen.
 
--> Jenkins Verwalten -> Knoten Verwalten (rechts) -> Configure Clouds (links) -> Kubernetes Cloud Details
-
-URL von `http://jenkins.jenkins.svc.microk8s-cluster:8080` auf `http://jenkins:8080` ändern.
-
+    

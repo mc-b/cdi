@@ -3,23 +3,24 @@
 #  
 
 output "ip_vm" {
-  value       = module.master.ip_vm
+  value       = module.git.*.ip_vm
   description = "The IP address of the server instance."
 }
 
 output "fqdn_vm" {
-  value       = module.master.fqdn_vm
+  value       = module.git.*.fqdn_vm
   description = "The FQDN of the server instance."
 }
 
 output "description" {
-  value       = module.master.description
+  value       = module.git.*.description
   description = "Description VM"
 }
 
 # Einfuehrungsseite(n)
 
 output "README" {
-  value = templatefile("INTRO.md", { ip = module.master.ip_vm, fqdn = module.master.fqdn_vm })
+  value = templatefile("INTRO.md", { ip = join("", module.git.*.ip_vm), fqdn = join("", module.git.*.fqdn_vm) })
 }
+
 
