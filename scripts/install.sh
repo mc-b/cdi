@@ -24,12 +24,12 @@ mkdir -p /data/project/cdi-gitops
 mkdir -p /data/project/cdi-gitops/infra
 mkdir -p /data/project/cdi-gitops/apps
 
-for infra in 02-SCM 03-cloud-init 03-terraform
+for infra in 02-SCM 03-cloud-init 03-terraform aws azure maas template
 do
     cd /data/project/cdi-gitops/infra && git clone https://gitlab.com/cdi-gitops/infra/${infra}
 done  
 
-for apps in 04-simple-java-app 05-make 05-maven 05-web-app 06-web-app 07-web-app 08-web-app
+for apps in 04-simple-java-app 05-make 05-maven 05-web-app 06-web-app 07-web-app 08-web-app 
 do
     cd /data/project/cdi-gitops/apps && git clone https://gitlab.com/cdi-gitops/apps/${apps}
 done
