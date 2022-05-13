@@ -17,19 +17,19 @@ sudo microk8s helm3 install -n gitlab gitlab-runner gitlab/gitlab-runner
 kubectl apply -f https://raw.githubusercontent.com/mc-b/duk/master/devops/eclipse-theia.yaml
 
 mkdir -p /data/project/src
-mkdir -p /data/project/cdi
-cp -rpv [0?]* /data/project/cdi/
+mkdir -p /data/project/cdi-old
+cp -rpv [0?]* /data/project/cdi-old/
 
-mkdir -p /data/project/cdi-gitops
-mkdir -p /data/project/cdi-gitops/infra
-mkdir -p /data/project/cdi-gitops/apps
+mkdir -p /data/project/cdi
+mkdir -p /data/project/cdi/infra
+mkdir -p /data/project/cdi/apps
 
 for infra in 02-SCM 03-cloud-init 03-terraform aws azure maas template
 do
-    cd /data/project/cdi-gitops/infra && git clone https://gitlab.com/cdi-gitops/infra/${infra}
+    cd /data/project/cdi/infra && git clone https://gitlab.com/mc-b-cdi/infra/${infra}
 done  
 
 for apps in 04-simple-java-app 05-make 05-maven 05-web-app 06-web-app 07-web-app 08-web-app 
 do
-    cd /data/project/cdi-gitops/apps && git clone https://gitlab.com/cdi-gitops/apps/${apps}
+    cd /data/project/cdi/apps && git clone https://gitlab.com/mc-b-cdi/apps/${apps}
 done
