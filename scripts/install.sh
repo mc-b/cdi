@@ -17,8 +17,8 @@ sudo microk8s helm3 install -n gitlab gitlab-runner gitlab/gitlab-runner
 kubectl apply -f https://raw.githubusercontent.com/mc-b/duk/master/devops/eclipse-theia.yaml
 
 mkdir -p /data/project/src
-mkdir -p /data/project/cdi-old
-cp -rpv [0?]* /data/project/cdi-old/
+mkdir -p /data/project/cdi-jenkins
+cp -rpv [0?]* /data/project/cdi-jenkins/
 
 mkdir -p /data/project/cdi
 mkdir -p /data/project/cdi/infra
