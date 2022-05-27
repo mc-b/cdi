@@ -38,6 +38,9 @@ module "cicd" {
   module      = "cicd-${var.host_no + 2}-${terraform.workspace}"
   description = "GitLab Pipelines with docker"
   userdata    = "cloud-init-cicd.yaml"
+  
+  # nur Multipass, alle anderen entfernen!
+  depends_on  = [ module.git ]
 
   cores   = 2
   memory  = 4
@@ -63,6 +66,9 @@ module "dev" {
   module      = "dev-${var.host_no}-${terraform.workspace}"
   description = "Eclipse Theia Entwicklungsumgebung"
   userdata    = "cloud-init-dev.yaml"
+  
+  # nur Multipass, alle anderen entfernen!
+  depends_on  = [ module.git, module.cicd ]
 
   cores   = 2
   memory  = 8
