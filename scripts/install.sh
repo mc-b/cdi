@@ -24,12 +24,12 @@ mkdir -p /data/project/cdi
 mkdir -p /data/project/cdi/infra
 mkdir -p /data/project/cdi/apps
 
-for infra in 02-SCM 03-cloud-init 03-terraform aws azure maas template
+for infra in 02-cloud-init 02-terraform 03-SCM aws azure maas template
 do
-    cd /data/project/cdi/infra && git clone https://gitlab.com/mc-b-cdi/infra/${infra}
+    cd /data/project/cdi/infra && git clone https://gitlab.com/ch-mc-b/cdi/infra/${infra}.git
 done  
 
-for apps in 04-simple-java-app 05-make 05-maven 05-web-app 06-web-app 07-web-app 08-web-app 
+for apps in 04-make 04-maven 05-web-app 06-web-app 07-web-app 08-web-app py-my-web-app web-app web-app-full
 do
-    cd /data/project/cdi/apps && git clone https://gitlab.com/mc-b-cdi/apps/${apps}
+    cd /data/project/cdi/apps && git clone https://gitlab.com/ch-mc-b/cdi/apps/${apps}.git
 done
