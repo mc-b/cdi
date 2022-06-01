@@ -23,5 +23,9 @@ Terraform Initialisieren und VMs erstellen
     
 Terraform verwendet [Multipass](https://multipass.run/) um mehrere VMs zu erstellen.
 
-Nach erfolgreicher Installation werden weitere Informationen für den Zugriff auf die VMS angezeigt.
+Nach erfolgreicher Installation werden weitere Informationen für den Zugriff auf die VMs angezeigt.
+
+### Client Umgebung
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://gitlab.com/ch-mc-b/cdi/infra/gitpod-workspace)
 
