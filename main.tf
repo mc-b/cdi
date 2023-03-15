@@ -10,6 +10,7 @@ module "git" {
   #source     = "git::https://github.com/mc-b/terraform-lerncloud-lernmaas"  
   #source     = "git::https://github.com/mc-b/terraform-lerncloud-aws"
   #source     = "git::https://github.com/mc-b/terraform-lerncloud-azure" 
+  #source     = "git::https://github.com/mc-b/terraform-lerncloud-proxmox"      
 
   module      = "git-${var.host_no + 1}-${terraform.workspace}"
   description = "GitLab"
