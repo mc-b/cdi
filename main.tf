@@ -38,6 +38,7 @@ module "cicd" {
   #source     = "git::https://github.com/mc-b/terraform-lerncloud-lernmaas"  
   #source     = "git::https://github.com/mc-b/terraform-lerncloud-aws"
   #source     = "git::https://github.com/mc-b/terraform-lerncloud-azure" 
+  #source     = "git::https://github.com/mc-b/terraform-lerncloud-proxmox"      
 
   module      = "cicd-${var.host_no + 2}-${terraform.workspace}"
   description = "GitLab Pipelines with docker"
@@ -66,6 +67,7 @@ module "dev" {
   #source     = "git::https://github.com/mc-b/terraform-lerncloud-lernmaas"  
   #source     = "git::https://github.com/mc-b/terraform-lerncloud-aws"
   #source     = "git::https://github.com/mc-b/terraform-lerncloud-azure" 
+  #source     = "git::https://github.com/mc-b/terraform-lerncloud-proxmox"      
 
   module      = "dev-${var.host_no}-${terraform.workspace}"
   description = "Eclipse Theia Entwicklungsumgebung"
