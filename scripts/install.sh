@@ -3,10 +3,10 @@
 #	Installationsscript cdi
 
 #Jenkins
-microk8s helm3 repo add jenkins https://charts.jenkins.io
-microk8s helm3 repo update
-microk8s kubectl create namespace jenkins
-microk8s helm3 upgrade --install jenkins --namespace jenkins -f scripts/values.yaml jenkins/jenkins
+#microk8s helm3 repo add jenkins https://charts.jenkins.io
+#microk8s helm3 repo update
+#microk8s kubectl create namespace jenkins
+#microk8s helm3 upgrade --install jenkins --namespace jenkins -f scripts/values.yaml jenkins/jenkins
 
 # gitlab-runner
 sudo microk8s helm3 repo add gitlab https://charts.gitlab.io
