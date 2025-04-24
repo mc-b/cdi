@@ -6,12 +6,14 @@ edit_uri: edit/main
 plugins:
   - techdocs-core
 
+docs_dir: ./
+
 nav:
-  - Einleitung: ../README.md
-  - Infrastruktur: ../02-Infrastruktur/README.md
-  - Build: ../03-Build/README.md
-  - SCM: ../04-SCM/README.md
-  - CI: ../05-CI/README.md
-  - Testen: ../06-Test/README.md
-  - Deployment: ../07-CD/README.md
+  - Einleitung: README.md
+  - Infrastruktur: 02-Infrastruktur/README.md
+  - Build: 03-Build/README.md
+  - SCM: 04-SCM/README.md
+  - CI: 05-CI/README.md
+  - Testen: 06-Test/README.md
+  - Deployment: 07-CD/README.md
   
