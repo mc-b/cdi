@@ -9,9 +9,11 @@ plugins:
       redirect_maps:
         'index.md': 'README.md'  
 
+docs_dir: cdi
+
 nav:
-  - Einleitung: README.md
-  - Infrastruktur: ../cdi/02-Infrastruktur/README.md
+  - Einleitung: cdi/README.md
+  - Infrastruktur: cdi/02-Infrastruktur/README.md
   - Build: 03-Build/README.md
   - SCM: 04-SCM/README.md
   - CI: ../05-CI/README.md
