@@ -1,0 +1,23 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: cdi
+  namespace: mc-b
+  description: 'Kurs: DevOps Engineering Practices & Tools (CDI)'
+  tags:
+  - devops
+  - ci-cd
+  - scm
+  - test
+  links:
+  - url: https://github.com/mc-b/cdi
+    title: Repository
+    icon: github
+  annotations:
+    github.com/project-slug: mc-b/cdi
+    backstage.io/source-location: url:https://github.com/mc-b/cdi
+    backstage.io/techdocs-ref: url:https://github.com/mc-b/cdi
+spec:
+  type: documentation
+  lifecycle: deprecated
+  owner: group:mc-b/mc-b

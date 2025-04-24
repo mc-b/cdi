@@ -1,0 +1,17 @@
+site_name: cdi
+site_description: 'Beispiele zum Kurs: [DevOps Engineering Practices & Tools (CDI)]'
+repo_url: https://github.com/mc-b/cdi
+edit_uri: edit/main
+
+plugins:
+  - techdocs-core
+
+nav:
+  - Einleitung: ../README.md
+  - Infrastruktur: ../02-Infrastruktur/README.ipynb
+  - Build: ../03-Build/README.ipynb
+  - SCM: ../04-SCM/README.ipynb
+  - CI: ../05-CI/README.ipynb
+  - Testen: ../06-Test/README.ipynb
+  - Deployment: ../07-CD/README.ipynb
+  
