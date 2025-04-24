@@ -7,7 +7,9 @@ plugins:
   - techdocs-core
   - redirects:
       redirect_maps:
-        'index.md': 'README.md'  
+        'index.md': 'README.md'
+          
+docs_dir: .
 
 nav:
   - Einleitung: README.md

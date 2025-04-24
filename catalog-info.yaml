@@ -16,7 +16,7 @@ metadata:
   annotations:
     github.com/project-slug: mc-b/cdi
     backstage.io/source-location: url:https://github.com/mc-b/cdi
-    backstage.io/techdocs-ref: github:https://github.com/mc-b/cdi
+    #backstage.io/techdocs-ref: url:https://github.com/mc-b/cdi
 spec:
   type: documentation
   lifecycle: deprecated
