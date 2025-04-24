@@ -8,10 +8,10 @@ plugins:
 
 nav:
   - Einleitung: ../README.md
-  - Infrastruktur: ../02-Infrastruktur/README.ipynb
-  - Build: ../03-Build/README.ipynb
-  - SCM: ../04-SCM/README.ipynb
-  - CI: ../05-CI/README.ipynb
-  - Testen: ../06-Test/README.ipynb
-  - Deployment: ../07-CD/README.ipynb
+  - Infrastruktur: ../02-Infrastruktur/README.md
+  - Build: ../03-Build/README.md
+  - SCM: ../04-SCM/README.md
+  - CI: ../05-CI/README.md
+  - Testen: ../06-Test/README.md
+  - Deployment: ../07-CD/README.md
   
