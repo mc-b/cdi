@@ -9,6 +9,7 @@ metadata:
   - ci-cd
   - scm
   - test
+  - digicomp
   links:
   - url: https://github.com/mc-b/cdi
     title: Repository
