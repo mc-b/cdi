@@ -10,6 +10,7 @@ metadata:
   - scm
   - test
   - digicomp
+  - education
   links:
   - url: https://github.com/mc-b/cdi
     title: Repository
@@ -19,6 +20,6 @@ metadata:
     backstage.io/source-location: url:https://github.com/mc-b/cdi
     #backstage.io/techdocs-ref: url:https://github.com/mc-b/cdi
 spec:
-  type: documentation
+  type: website
   lifecycle: deprecated
   owner: group:mc-b/mc-b
